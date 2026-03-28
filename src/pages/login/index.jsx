@@ -5,15 +5,15 @@ import './style.css'
 function Login() {
 
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [senha, setSenha] = useState('')
     // Capturar os valores para enviar pro backend
     const [erro, setErro] = useState('')
 
 
     function handleLogin(){
-    const dados = { email, password }
+    const dados = { email, senha }
 
-    fetch('URL_DO_RAFAEL/login', {
+    fetch('https://187.127.0.158:8080/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dados)
@@ -50,12 +50,12 @@ function Login() {
 
         <label htmlFor="password">Senha:</label>
         <input
-            id="password"
-            name="password"
+            id="senha"
+            name="senha"
             type="password"
             placeholder="Digite sua senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
             // aqui estamos capturando o valor do input e atualizando o estado password
         />
 

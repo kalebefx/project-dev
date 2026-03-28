@@ -4,15 +4,15 @@ import './style.css'
 
 function Cadastro({onCadastro}) {
 
-    const [name, setName] = useState('')
+    const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [senha, setSenha] = useState('')
     // Capturar os valores para enviar pro backend
 
     function handleCadastro(){
-    const dados = { name, email, password }
+    const dados = { nome, email, senha }
 
-    fetch('URL_DO_RAFAEL/cadastro', {
+    fetch('https://187.127.0.158:8080/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dados)
@@ -34,12 +34,12 @@ function Cadastro({onCadastro}) {
         <label htmlFor="name">Nome:</label>
 
         <input
-            id="name"
-            name="name"
+            id="nome"
+            name="nome"
             type="text"
             placeholder="Digite seu nome completo"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
             // aqui estamos capturando o valor do input e atualizando o estado name
         />
 
@@ -54,14 +54,14 @@ function Cadastro({onCadastro}) {
             // aqui estamos capturando o valor do input e atualizando o estado email
         />
 
-        <label htmlFor="password">Senha:</label>
+        <label htmlFor="senha">Senha:</label>
         <input
-            id="password"
-            name="password"
+            id="senha"
+            name="senha"
             type="password"
             placeholder="Digite sua senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
             // aqui estamos capturando o valor do input e atualizando o estado password
         />
 
