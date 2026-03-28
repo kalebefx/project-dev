@@ -12,7 +12,7 @@ function Cadastro({onCadastro}) {
     function handleCadastro(){
     const dados = { nome, email, senha }
 
-    fetch('http://187.127.0.158:8080/api/register', {
+    fetch('https://reachfy.com.br/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dados)
