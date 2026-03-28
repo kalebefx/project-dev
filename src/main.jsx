@@ -1,11 +1,22 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import cadastro from './pages/cadastro'
-import './index.css'
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Cadastro from "./pages/cadastro";
+import Login from "./pages/login";
+import "./index.css";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <cadastro />
-  </StrictMode>,
-)
+function App() {
+  const [cadastrado, setCadastrado] = useState(false)
+  // false = mostra Cadastro, true = mostra Login
+
+  return cadastrado ? (
+    <Login />
+  ) : (
+    <Cadastro onCadastro={() => setCadastrado(true)} />
+  )
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

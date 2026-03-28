@@ -2,17 +2,15 @@ import { useState } from 'react' // importando o useState, captura o valor do in
 import './style.css'
 
 
-function Cadastro({onCadastro}) {
+function Login() {
 
-    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     // Capturar os valores para enviar pro backend
 
-    function handleCadastro(){
-        const dados = { name, email, password }
+    function handleLogin(){
+        const dados = {email, password }
         console.log(dados)
-        onCadastro()
         // Lógica para enviar os dados para o backend
     }
 
@@ -20,18 +18,7 @@ function Cadastro({onCadastro}) {
   return (
     <div className="container">
       <div className="form-box">
-        <h1>Cadastro de Usuários</h1>
-        <label htmlFor="name">Nome:</label>
-
-        <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Digite seu nome completo"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            // aqui estamos capturando o valor do input e atualizando o estado name
-        />
+        <h1>login de Usuários</h1>
 
         <label htmlFor="email">Email:</label>
         <input
@@ -55,11 +42,11 @@ function Cadastro({onCadastro}) {
             // aqui estamos capturando o valor do input e atualizando o estado password
         />
 
-        <button type="button" onClick={handleCadastro}>
-            Cadastrar
+          <button type="button" onClick={handleLogin}>
+            Login
         </button>
       </div>
     </div>
   )
 }
-export default Cadastro
+export default Login
