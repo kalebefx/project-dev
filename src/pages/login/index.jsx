@@ -7,12 +7,29 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     // Capturar os valores para enviar pro backend
+    const [erro, setErro] = useState('')
+
 
     function handleLogin(){
-        const dados = {email, password }
-        console.log(dados)
-        // Lógica para enviar os dados para o backend
-    }
+    const dados = { email, password }
+
+    fetch('URL_DO_RAFAEL/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.erro){
+            setErro('Usuário não encontrado, tente novamente.')
+        } else {
+            console.log('Login ok!', data) //isso vai pra dps da tela de login
+        }
+    })
+    .catch(error => {
+        console.log('Erro no login:', error)
+    })
+}
 
 
   return (
@@ -45,8 +62,11 @@ function Login() {
           <button type="button" onClick={handleLogin}>
             Login
         </button>
+      
+        {erro && <p style={{ color: 'red', marginTop: '10px' }}>{erro}</p>}        
       </div>
     </div>
   )
 }
+
 export default Login

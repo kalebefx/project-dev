@@ -10,11 +10,21 @@ function Cadastro({onCadastro}) {
     // Capturar os valores para enviar pro backend
 
     function handleCadastro(){
-        const dados = { name, email, password }
-        console.log(dados)
-        onCadastro()
-        // Lógica para enviar os dados para o backend
-    }
+    const dados = { name, email, password }
+
+    fetch('URL_DO_RAFAEL/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.json())
+    .then(data => {
+        onCadastro() // isso e pra tela de Login
+    })
+    .catch(error => {
+        console.log('Erro no cadastro:', error)
+    })
+}
 
 
   return (
