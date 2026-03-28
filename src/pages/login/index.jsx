@@ -13,7 +13,7 @@ function Login() {
     function handleLogin(){
     const dados = { email, senha }
 
-    fetch('https://187.127.0.158:8080/api/login', {
+    fetch('http://187.127.0.158:8080/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dados)
